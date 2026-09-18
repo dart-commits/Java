@@ -1,0 +1,145 @@
+//Medical Record
+import java.io.*;
+
+public class MedicalRecord {
+
+    public static void main(String[] args) {
+
+        try {
+            // Store patient details in file
+            FileWriter recordWriter = new FileWriter("medicaldata.txt");
+
+            recordWriter.write("Patient ID: 307\n");
+            recordWriter.write("Name: Neha Verma\n");
+            recordWriter.write("Age: 28\n");
+            recordWriter.write("Diagnosis: Migraine\n");
+
+            recordWriter.close();
+
+            // Retrieve patient details from file
+            FileReader recordReader = new FileReader("medicaldata.txt");
+            BufferedReader patientReader = new BufferedReader(recordReader);
+
+            String patientData;
+
+            System.out.println("Patient Details:");
+
+            while ((patientData = patientReader.readLine()) != null) {
+                System.out.println(patientData);
+            }
+
+            patientReader.close();
+
+        } catch (IOException error) {
+            System.out.println("File operation failed: " + error.getMessage());
+        }
+    }
+}
+//Printable Demo
+interface Printable {
+    void printDetails();
+}
+
+class Student implements Printable {
+    public void printDetails() {
+        System.out.println("Student Name: Rahul");
+        System.out.println("Course: BCA");
+    }
+}
+
+class Employee implements Printable {
+    public void printDetails() {
+        System.out.println("Employee Name: Amit");
+        System.out.println("Department: IT");
+    }
+}
+
+public class PrintableDemo {
+    public static void main(String[] args) {
+        Printable student = new Student();
+        Printable employee = new Employee();
+        System.out.println("--- Student Details ---");
+        student.printDetails();
+        System.out.println();
+        System.out.println("--- Employee Details ---");
+        employee.printDetails();
+    }
+}
+//StaffRecord
+import java.io.*;
+
+public class StaffRecord {
+
+    public static void main(String[] args) {
+
+        try {
+            // Store employee details in file
+            FileWriter fileOut = new FileWriter("staffdata.txt");
+
+            fileOut.write("Employee ID: 205\n");
+            fileOut.write("Name: Arjun Mehta\n");
+            fileOut.write("Department: Finance\n");
+            fileOut.write("Salary: 52000\n");
+
+            fileOut.close();
+
+            // Retrieve employee details from file
+            FileReader fileIn = new FileReader("staffdata.txt");
+            BufferedReader dataReader = new BufferedReader(fileIn);
+
+            String record;
+
+            System.out.println("Employee Details:");
+
+            while ((record = dataReader.readLine()) != null) {
+                System.out.println(record);
+            }
+
+            dataReader.close();
+
+        } catch (IOException error) {
+            System.out.println("File operation failed: " + error.getMessage());
+        }
+    }
+}
+
+//SwitchableDemo
+interface Switchable {
+    void turnOn();
+
+    void turnOff();
+}
+
+class Light implements Switchable {
+    public void turnOn() {
+        System.out.println("Light is ON");
+    }
+
+    public void turnOff() {
+        System.out.println("Light is OFF");
+    }
+}
+
+class Fan implements Switchable {
+    public void turnOn() {
+        System.out.println("Fan is ON");
+    }
+
+    public void turnOff() {
+        System.out.println("Fan is OFF");
+    }
+}
+
+public class SwitchableDemo {
+    public static void main(String[] args) {
+        Switchable light = new Light();
+        Switchable fan = new Fan();
+        System.out.println("Light Status ");
+        light.turnOn();
+        light.turnOff();
+        System.out.println();
+        System.out.println("Fan Status ");
+        fan.turnOn();
+        fan.turnOff();
+    }
+}
